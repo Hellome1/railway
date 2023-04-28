@@ -419,7 +419,9 @@ DataAdapter.prototype = {
             for (var i = data.length - 1; i >= 0; i--) {
                 var itm = data[i];
                 var extraConditoinKey = timeTables ? 'date' :
-                    dict_isBranch_flags.length && groupField ? 'groupId' : '';
+                    !dict && groupField? 'groupId' : 
+                    dict_isBranch_flags.length && groupField ? 'groupId' : 
+                    o.direction === 'column' ? 'date' : '';
                 /* 代表数据会按照groupId分支 */
                 var dupData_in_ndata = ndata
                     .filter(function(ndataitm) { 
